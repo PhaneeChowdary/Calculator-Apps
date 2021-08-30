@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Calculator App 1</title>
+</head>
+
+<body class="bg-light">
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 2rem;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Calculator-1</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructions">Instructions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="text-align: center;color: red;margin-top: 4rem">Calculator App 1</h1>
+
+    <div class="container-fluid" style="margin-bottom: 10rem;">
+        <div class="row">
+            <div class="col-md-6" style="margin: 2rem auto 0 auto;">
+                {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{error}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% elif result %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ans}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                <img class="img-fluid" src='/static/calc1.jpg' alt="calc1-image">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="GET" action="{% url 'submit' %}">
+                            <div class="form-group">
+                                <input type="search" class="form-control" name="query">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-success" style="margin: 10px auto auto 3rem">Calculate</button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="reset" class="btn btn-danger" style="margin: 10px 3rem auto auto;float:right">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2rem">
+            <div class="col-md-6" style="margin: 0 auto">
+                <p class="display-4" id="about" name="about" style="text-align: center;">
+                    About
+                </p>
+                <hr>
+                <p class="lead" style="text-align:center;">
+                    This can perform mathematical calculations.
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2rem">
+            <div class="col-md-6" style="margin: 0 auto">
+                <p class="display-4" id="instructions" name="instructions" style="text-align: center;">
+                    Instructions
+                </p>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">+ Addition</li>
+                    <li class="list-group-item">- Subtraction</li>
+                    <li class="list-group-item">* Multiplication</li>
+                    <li class="list-group-item">/ Division</li>
+                    <li class="list-group-item">// Floor Division</li>
+                    <li class="list-group-item">% Modulus</li>
+                    <li class="list-group-item">( ) Parantheses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <footer class="fixed-bottom navbar-light" style="background: black;color: white;text-align:center;padding: 0.6rem">
+                Phanee
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Calculator 2</title>
+    <style>
+        body {
+            background: rgb(250, 223, 223);
+            background-size: cover;
+            font-family: 'Architects Daughter', cursive;
+            margin: 0 auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .result {
+            background: rgb(219, 181, 219);
+            border-radius: 10px;
+            border-style: dotted;
+            padding: 8px;
+            margin: 50px;
+            font-size: 20px;
+        }
+
+        div {
+            padding: 5px;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            color: rgb(25, 148, 121);
+            font-weight: bold;
+            margin: 2%;
+            text-align: center;
+        }
+
+        .warn {
+            margin: 20px;
+            padding: 15px;
+        }
+
+        button {
+            margin: 10px;
+            text-align: center;
+        }
+
+        #add,
+        #subtract,
+        #multiply,
+        #divide,
+        #reset,
+        #value1,
+        #value2 {
+            color: rgb(207, 46, 100);
+            border-radius: 5px;
+            background: rgb(204, 204, 179);
+            font-weight: bold;
+            padding: 4px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body class="bg-light">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin-bottom: 2rem;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Calculator-2</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#instructions">Instructions</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h1 style="text-align: center;color: red;margin-top: 4rem">Calculator App 2</h1>
+
+        <img src="static/calc2.jpg" class="img-fluid" alt="calculator-image">
+        <div>
+            <label for="value1">A</label>
+            <input type="text" id="value1" value=""><br>
+            <label for="value2">B</label>
+            <input type="text" id="value2" value="">
+        </div>
+        <div class="buttons">
+            <button type="submit" id="add" onClick="calc(this.id)">Add</button>
+            <button type="submit" id="subtract" onClick="calc(this.id)">Subtract</button>
+            <button type="submit" id="multiply" onClick="calc(this.id)">Multiply</button>
+            <button type="submit" id="divide" onClick="calc(this.id)">Division</button>
+            <button type="submit" id="reset" onClick="calc(this.id)">Reset</button>
+        </div>
+
+        <div class="result" id="result">
+            Your result will be displayed here.
+        </div>
+
+        <div class="row" style="margin-top: 2rem">
+            <div class="col-md-6" style="margin: 0 auto">
+                <p class="display-4" id="about" name="about" style="text-align: center;">
+                    About
+                </p>
+                <hr>
+                <p class="lead" style="text-align:center;">
+                    This is a calculator app that performs basic mathematical calculations.
+                </p>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2rem">
+            <div class="col-md-6" style="margin: 0 auto">
+                <p class="display-4" id="instructions" name="instructions" style="text-align: center;">
+                    Instructions
+                </p>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item">+ Addition</li>
+                    <li class="list-group-item">- Subtraction</li>
+                    <li class="list-group-item">* Multiplication</li>
+                    <li class="list-group-item">/ Division</li>
+                    <li class="list-group-item">// Floor Division</li>
+                    <li class="list-group-item">% Modulus</li>
+                    <li class="list-group-item">( ) Parantheses</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer  -->
+        <div class="container-fluid">
+            <div class="row">
+                <footer class="fixed-bottom navbar-light"
+                    style="background: black;color: white;text-align:center;padding: 0.6rem">
+                    Phanee
+                </footer>
+            </div>
+        </div>
+
+        <script>
+            function calc(id) {
+                let val1 = parseFloat(document.getElementById("value1").value);
+                let val2 = parseFloat(document.getElementById("value2").value);
+                if (isNaN(val1) || isNaN(val2)) {
+                    if (id == "reset") {
+                        alert("Values are already empty.")
+                    }
+                    else {
+                        alert("Enter valid numbers");
+                    }
+                }
+                else {
+                    add_res = val1 + val2;
+                    sub_res = val1 - val2;
+                    mul_res = val1 * val2;
+                    div_res = val1 / val2;
+                    switch (id) {
+                        case "add": document.getElementById("result").innerHTML = `Result <h3>${add_res}</h3>`;
+                            break;
+                        case "subtract": document.getElementById("result").innerHTML = `Result <h3>${sub_res}</h3>`;
+                            break;
+                        case "multiply": document.getElementById("result").innerHTML = `Result <h3>${mul_res}</h3>`;
+                            break;
+                        case "divide": document.getElementById("result").innerHTML = `Result <h3>${div_res}</h3>`;
+                            break;
+                        case "reset": value1.value = "";
+                            value2.value = "";
+                            document.getElementById("result").innerHTML = "Your result will be displayed here.";
+                    }
+                }
+            }
+        </script>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
