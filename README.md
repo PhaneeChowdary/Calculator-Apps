@@ -1,4 +1,4 @@
 # Calculator-Apps
-Two apps in single django project<br>
-    1.Using python and bootstrap<br>
-    2.Using HTML, CSS and JS
+### Two apps in single django project. 
+1. Using python and bootstrap.
+1. Using HTML, CSS and JS
